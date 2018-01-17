@@ -48,13 +48,14 @@ class Student(models.Model):
 		choices=SEX_CHOICES,
 		default=MALE,
 		)
-	name = models.CharField(max_length=40)
+	surname = models.CharField(max_length=20, blank=False)
+	other_names = models.CharField(max_length=20)
 	father_phone = models.CharField(max_length=14)
 	mother_phone = models.CharField(max_length=14)
 	date_of_birth = models.DateField(default=datetime.date.today, 
 		blank=False, null=True
 		)
-	age = models.IntegerField(null=True, blank=False)
+	age = models.IntegerField(null=True, blank=True)
 
 	def save(self, *args, **kwargs):
 		#self.age = (datetime.date.today() - self.date_of_birth).days
@@ -66,7 +67,7 @@ class Student(models.Model):
 	#age = models.IntegerField(age_figure, null=True, blank=False)
 
 	def __str__(self):
-		return self.name
+		return self.surname + " " + self.other_names
 
 class Payment(models.Model):
 	payment_date = models.DateField(default=timezone.now)
