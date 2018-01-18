@@ -9,7 +9,7 @@
 
         {% for student in students %}
         	<div>
-        		<p>Name: <a href="">{{ student.surname }} {{ student.surname }}</a></p>
+        		<p>Name: <a href="">{{ student.surname }} {{ student.other_names }}</a></p>
         		<p>{{ student.date_of_birth }}</p>
         	</div>
         {% endfor %}
