@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Student
 
 # Create your views here.
-def post_list(request):
+def student_list(request):
 	students = Student.objects.order_by('date_of_birth')
-	return render(request, 'records/post_list.html', {'students': students})
+	return render(request, 'records/student_list.html', {'students': students})
+
+def student_detail(request, pk):
+	student = get_object_or_404(Student, pk=pk)
+	return render(request, 'records/student_detail.html', {'student': student})
