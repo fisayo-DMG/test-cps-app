@@ -4,7 +4,7 @@ from .models import Student
 
 # Create your views here.
 def student_list(request):
-	students = Student.objects.order_by('date_of_birth')
+	students = Student.objects.order_by('school_class')
 	return render(request, 'records/student_list.html', {'students': students})
 
 def student_detail(request, pk):
