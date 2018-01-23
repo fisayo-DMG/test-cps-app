@@ -3,17 +3,17 @@ from django.utils import timezone
 import datetime
 
 class Student(models.Model):
-	CRECHE = '1. CR'
-	PLAYGROUP_1 = '2. PG1'
-	PLAYGROUP_2 = '3. PG2'
-	KINDERGARTEN_1 = '4. KG1'
-	KINDERGARTEN_2 = '5. KG2'
-	GRADE_K = '6. GK'
-	GRADE_1 = '7. G1'
-	GRADE_2 = '8. G2'
-	GRADE_3 = '9. G3'
-	GRADE_4 = '10. G4'
-	GRADE_5 = '11. G5'
+	CRECHE = 'Creche'
+	PLAYGROUP_1 = 'PG1'
+	PLAYGROUP_2 = 'PG2'
+	KINDERGARTEN_1 = 'KG1'
+	KINDERGARTEN_2 = 'KG2'
+	GRADE_K = 'GK'
+	GRADE_1 = 'G1'
+	GRADE_2 = 'G2'
+	GRADE_3 = 'G3'
+	GRADE_4 = 'G4'
+	GRADE_5 = 'Grade 5'
 	SCHOOL_CLASS_CHOICES = (
 		(CRECHE, 'Creche'),
 		(PLAYGROUP_1, 'Playgroup 1'),
@@ -28,9 +28,8 @@ class Student(models.Model):
 		(GRADE_5, 'Grade 5'),
 		)
 	school_class = models.CharField(
-		max_length=6,
+		max_length=3,
 		choices=SCHOOL_CLASS_CHOICES,
-		default=CRECHE,
 		)
 
 	def in_kindergarten(self):
@@ -50,8 +49,8 @@ class Student(models.Model):
 		)
 	surname = models.CharField(max_length=20, blank=False)
 	other_names = models.CharField(max_length=20)
-	father_phone = models.CharField(max_length=14)
-	mother_phone = models.CharField(max_length=14)
+	father_phone = models.CharField(max_length=14, blank=True)
+	mother_phone = models.CharField(max_length=14, blank=True)
 	date_of_birth = models.DateField(default=datetime.date.today, 
 		blank=False, null=True
 		)

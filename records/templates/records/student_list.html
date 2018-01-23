@@ -5,7 +5,7 @@
 		<div class="post">
 			<p>Name: <a href="{% url 'student_detail' pk=student.pk %}">{{ student.surname }} {{ student.other_names }}</a></p>
 			<div class="date">
-				<p>{{ student.date_of_birth }}</p>
+				<p>{{ student.school_class }}</p>
 			</div>
 		</div>
 	{% endfor %}
